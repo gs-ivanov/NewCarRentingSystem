@@ -1,6 +1,7 @@
 namespace CarRentingSystem
 {
     using CarRentingSystem.Data;
+    using CarRentingSystem.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,8 @@ namespace CarRentingSystem
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,6 +65,8 @@ namespace CarRentingSystem
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
+
+            
         }
     }
 }

@@ -15,7 +15,6 @@
         [MaxLength(CarModelMaxLenght)]
         public string Model { get; set; }
 
-        [MaxLength(CarDescriptionMaxLenght)]
         public string Description { get; set; }
 
         [Required]
