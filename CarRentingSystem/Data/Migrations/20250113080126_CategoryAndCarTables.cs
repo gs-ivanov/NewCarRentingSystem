@@ -1,7 +1,7 @@
-﻿namespace CarRentingSystem.Data.Migrations
-{
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+namespace CarRentingSystem.Data.Migrations
+{
     public partial class CategoryAndCarTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
