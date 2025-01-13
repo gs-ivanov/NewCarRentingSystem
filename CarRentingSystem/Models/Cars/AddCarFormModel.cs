@@ -36,8 +36,6 @@
 
         public IEnumerable<CarCategoryViewModel> Categories { get; set; }
 
-        public bool Whatever { get; init; }
-
         //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         //{
         //    if (this.Brand == "Mercedes" && this.Model == "300D")
