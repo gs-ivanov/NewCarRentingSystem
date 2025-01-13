@@ -19,6 +19,7 @@
             this.data = data;
         }
 
+        // GET -> Browser renders Form
         public IActionResult Add() => View(new AddCarFormModel
         {
             Categories = this.GetCarCategories()
