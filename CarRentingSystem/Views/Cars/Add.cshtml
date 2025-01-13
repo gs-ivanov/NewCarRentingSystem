@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3  col-xl-6 ">
         <h2 class="heading-marging text-center">Add Car</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="Brand"></label>
                 <input asp-for="Brand" class="form-control" placeholder="Toyota, BMW, etc..." value="Toyota">
@@ -42,6 +42,9 @@
                     }
                 </select>
             </div>
+
+            <input type="file" name="Image"/>
+
             <input class="btn btn-primary" type="submit" value="Save" />
         </form>
     </div>

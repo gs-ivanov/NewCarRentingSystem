@@ -3,9 +3,12 @@
     using CarRentingSystem.Data;
     using CarRentingSystem.Data.Models;
     using CarRentingSystem.Models.Cars;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
+
+    using FileSystem = System.IO.File;
 
     public class CarsController : Controller
     {
@@ -22,8 +25,16 @@
         });
 
         [HttpPost]
-        public IActionResult Add(AddCarFormModel car)
+        public IActionResult Add(AddCarFormModel car, IFormFile image)//Ako sa mnogo failove: IEnumerable<IFormFile>
         {
+            //if (image==null|| image.Length>2*1024*1024)
+            //{
+            //    this.ModelState.AddModelError("Image", "The image is not valid. It is required and it should be less than 2 MB");
+            //}
+
+            ////Работи - Копира снимка в руут директорията на приложението.
+            //image.CopyTo(FileSystem.OpenWrite($"C:/Users/George/Desktop/CSharp/PROJECTS/NewCarRentingSystem/CarRentingSystem/wwwroot/images/{image.FileName}"));
+
             if (!this.data.Categories.Any(c=>c.Id==car.CategoryId))
             {
                 this.ModelState.AddModelError(nameof(car.CategoryId), "Category does not exist");

@@ -5,11 +5,11 @@
 
     using static Data.DataConstants;
 
-    public class AddCarFormModel
+    public class AddCarFormModel   // : IValidatableObject
     {
         [Required]
         [MinLength(CarBrandMinLenght)]
-        [StringLength(CarBrandMaxLenght,MinimumLength =CarBrandMinLenght)] 
+        [StringLength(CarBrandMaxLenght, MinimumLength = CarBrandMinLenght)]
         public string Brand { get; init; }
 
         [Required]
@@ -20,10 +20,10 @@
         [StringLength(
             int.MaxValue,
             MinimumLength = CarDescriptionlMinLenght,
-            ErrorMessage ="The field Description must be a string with a minimum length of {1}")]
+            ErrorMessage = "The field Description must be a string with a minimum length of {1}")]
         public string Description { get; init; }
 
-        [Display(Name="Image URL")]
+        [Display(Name = "Image URL")]
         [Required]
         [Url]
         public string ImageUrl { get; init; }
@@ -35,5 +35,13 @@
         public int CategoryId { get; init; }
 
         public IEnumerable<CarCategoryViewModel> Categories { get; set; }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    if (this.Brand == "Mercedes" && this.Model == "300D")
+        //    {
+        //        yield return new ValidationResult("300D is noat Mercedes?!");
+        //    }
+        //}
     }
 }
