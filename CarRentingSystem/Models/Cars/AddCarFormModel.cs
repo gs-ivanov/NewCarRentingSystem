@@ -8,19 +8,18 @@
     public class AddCarFormModel   // : IValidatableObject
     {
         [Required]
-        [MinLength(CarBrandMinLenght)]
-        [StringLength(CarBrandMaxLenght, MinimumLength = CarBrandMinLenght)]
+        [StringLength(CarBrandMaxLength, MinimumLength = CarBrandMinLength)]
         public string Brand { get; init; }
 
         [Required]
-        [StringLength(CarModelMaxLenght, MinimumLength = CarModelMinLenght)]
+        [StringLength(CarModelMaxLength, MinimumLength = CarModelMinLength)]
         public string Model { get; init; }
 
         [Required]
         [StringLength(
             int.MaxValue,
-            MinimumLength = CarDescriptionlMinLenght,
-            ErrorMessage = "The field Description must be a string with a minimum length of {1}")]
+            MinimumLength = CarDescriptionMinLength,
+            ErrorMessage = "The field Description must be a string with a minimum length of {2}.")]
         public string Description { get; init; }
 
         [Display(Name = "Image URL")]
@@ -28,20 +27,12 @@
         [Url]
         public string ImageUrl { get; init; }
 
-        [Range(CarYearlMinValue, CarYearlMaxValue)]
+        [Range(CarYearMinValue, CarYearMaxValue)]
         public int Year { get; init; }
 
         [Display(Name = "Category")]
         public int CategoryId { get; init; }
 
         public IEnumerable<CarCategoryViewModel> Categories { get; set; }
-
-        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        //{
-        //    if (this.Brand == "Mercedes" && this.Model == "300D")
-        //    {
-        //        yield return new ValidationResult("300D is noat Mercedes?!");
-        //    }
-        //}
     }
 }

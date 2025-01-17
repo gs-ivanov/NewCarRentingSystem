@@ -8,13 +8,14 @@
         public int Id { get; init; }
 
         [Required]
-        [MaxLength(CarBrandMaxLenght)]
+        [MaxLength(CarBrandMaxLength)]
         public string Brand { get; set; }
 
         [Required]
-        [MaxLength(CarModelMaxLenght)]
+        [MaxLength(CarModelMaxLength)]
         public string Model { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         [Required]
@@ -24,7 +25,7 @@
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public Category Category { get; init; }
 
     }
 }

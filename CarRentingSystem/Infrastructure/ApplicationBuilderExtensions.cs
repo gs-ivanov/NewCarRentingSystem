@@ -12,16 +12,16 @@
         public static IApplicationBuilder PrepareDatabase(
            this IApplicationBuilder app)
         {
-            using var scopedservices = app.ApplicationServices.CreateScope();
+            using var scopedServices = app.ApplicationServices.CreateScope();
 
-            var data= scopedservices.ServiceProvider.GetService<CarRentingDbContext>();
+            var data = scopedServices.ServiceProvider.GetService<CarRentingDbContext>();
 
             data.Database.Migrate();
 
             SeedCategories(data);
 
             return app;
-        } 
+        }
 
         private static void SeedCategories(CarRentingDbContext data)
         {

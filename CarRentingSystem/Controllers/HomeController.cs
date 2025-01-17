@@ -27,7 +27,7 @@
                    Brand = c.Brand,
                    Model = c.Model,
                    Year = c.Year,
-                   ImageUrl = c.ImageUrl,
+                   ImageUrl = c.ImageUrl
                })
                .Take(3)
                .ToList();
@@ -35,7 +35,7 @@
             return View(new IndexViewModel
             {
                 Cars=cars,
-                TotalCars=totalCars
+                TotalCars=totalCars,
             });
         }
 
