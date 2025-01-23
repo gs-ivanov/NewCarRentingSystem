@@ -1,11 +1,13 @@
 ﻿namespace CarRentingSystem.Controllers
 {
-    using CarRentingSystem.Data;
-    using CarRentingSystem.Data.Models;
-    using CarRentingSystem.Models.Cars;
-    using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
+    using CarRentingSystem.Data;
+    using CarRentingSystem.Data.Models;
+    using CarRentingSystem.Infrastructure;
+    using CarRentingSystem.Models.Cars;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
 
     public class CarsController : Controller
     {
@@ -66,10 +68,21 @@
 
             return View(query);
         }
-        public IActionResult Add() => View(new AddCarFormModel
+
+        [Authorize]
+        public IActionResult Add()
         {
-            Categories = this.GetCarCategories()
-        });
+            if (!this.UserIsDealer())
+            {
+                return RedirectToAction(nameof(DealersController.Become), "Dealers");
+            }
+
+            return View(new AddCarFormModel
+            {
+                Categories = this.GetCarCategories()
+            });
+
+        }
 
         [HttpPost]
         public IActionResult Add(AddCarFormModel car)
@@ -100,6 +113,11 @@
 
             return RedirectToAction(nameof(All));
         }
+
+        private bool UserIsDealer()
+            => this.data
+                .Dealers
+                .Any(d => d.UserId == this.User.GetId());
 
         private IEnumerable<CarCategoryViewModel> GetCarCategories()
             => this.data
