@@ -1,0 +1,30 @@
+﻿<h1>Hi!!!</h1>
+// "disabled"
+
+@{ 
+   var CurrentPage = 1;
+}
+<div class="row mb-5">
+    <div class="col-md-6">
+        <a class="btn btn-primary float-left @(CurrentPage == 1 ? "disabled" : string.Empty)"
+           asp-controller="Cars"
+           asp-action="All"
+           asp-route-currentPage="previousPage"
+           asp-route-brand="Brand"
+           asp-route-searchTerm="SearchTerm"
+           asp-route-sorting="Sorting"><<</a>
+
+    @{
+        var shouldButtonBeDisabled = false;
+    }
+
+    <div class="col-md-6">
+        <a class="btn btn-primary float-sm-right @(CurrentPage == 2 ? "disabled" : string.Empty)"
+           asp-controller="Cars"
+           asp-action="All"
+           asp-route-currentPage="CurrentPage + 1)"
+           asp-route-brand="Brand"
+           asp-route-searchTerm="SearchTerm"
+           asp-route-sorting="Sorting)">>></a>
+    </div>
+</div>
