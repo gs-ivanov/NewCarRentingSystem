@@ -38,7 +38,7 @@
                 new Category{Name="Large"},
                 new Category{Name="SUV"},
                 new Category{Name="Vans"},
-                new Category{Name="Luxory"},
+                new Category{Name="Luxory"}
             });
 
             data.SaveChanges();

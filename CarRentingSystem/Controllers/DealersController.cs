@@ -1,12 +1,12 @@
 ﻿namespace CarRentingSystem.Controllers
 {
+    using System.Linq;
     using CarRentingSystem.Data;
     using CarRentingSystem.Data.Models;
     using CarRentingSystem.Infrastructure;
     using CarRentingSystem.Models.Dealers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
 
     public class DealersController : Controller
     {
