@@ -1,7 +1,9 @@
 namespace CarRentingSystem
 {
     using CarRentingSystem.Data;
+    using CarRentingSystem.Data.Models;
     using CarRentingSystem.Infrastructure;
+    using CarRentingSystem.Services.Dealers;
     using CarRentingSystem.Services.Cars;
     using CarRentingSystem.Services.Statistics;
     using Microsoft.AspNetCore.Builder;
@@ -30,19 +32,22 @@ namespace CarRentingSystem
                 .AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<User>(options =>
                 {
                     options.Password.RequireDigit = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<CarRentingDbContext>();
             
             services.AddControllersWithViews(options=>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
+            services.AddTransient<IDealerService, DealerService>();
 
             services.AddTransient<ICarService, CarService>();
 

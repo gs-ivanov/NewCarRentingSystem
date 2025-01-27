@@ -125,7 +125,7 @@
             .Cars
             .Any(c => c.Id == carId && c.DealerId == dealerId);
 
-        public IEnumerable<string> AllCarBrands()
+        public IEnumerable<string> AllBrands()
             => this.data
             .Cars
             .Select(c => c.Brand)
@@ -143,11 +143,6 @@
             })
             .ToList();
 
-        public bool CategoryExist(int categoryId)
-            => this.data
-                .Categories
-            .Any(c => c.Id == categoryId);
-
         private static IEnumerable<CarSeviceModel> GetCars(IQueryable<Car> carQuery)
             => carQuery
                 .Select(c => new CarSeviceModel
@@ -160,5 +155,12 @@
                     CategoryName = c.Category.Name
                 })
                 .ToList();
+
+        public bool CategoryExists(int categoryId)
+            => this.data
+                .Categories
+                .Any(c => c.Id == categoryId);
+
+
     }
 }
